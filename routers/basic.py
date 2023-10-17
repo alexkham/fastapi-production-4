@@ -33,3 +33,9 @@ def divide(x,y):
     except:
       return {"result":'NaN',
               "StatusCode":500}  
+    
+@router.get("/multiply/{x}/{y}")
+def power(x,y):
+    result=float(x)**float(y)
+    
+    return {"result":str(result)}    
