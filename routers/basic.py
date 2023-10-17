@@ -74,3 +74,13 @@ def greatest_common_divisor(x,y):
     y=int(y)
     result=math.gcd(x,y)
     return {"result":str(result)}  
+
+@router.get("/exp/{x}/")
+def exponent(x):
+    result=math.exp(float(x))
+    return {"result":str(result)}
+
+@router.get("/log10/{x}/")
+def log10(x):
+    result=math.log10(float(x))
+    return {"result":str(result)}
