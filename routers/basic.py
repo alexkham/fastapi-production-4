@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from math import *
+import math
 
 router=APIRouter(
     prefix='/basic',
@@ -45,3 +45,18 @@ def power(x,y):
 def get_abs(x):
     result=abs(float(x))
     return {"result":str(result)}
+
+
+@router.get("/percentage/{x}/{y}")
+def percentage(x,y):
+    result=(float(x)/float(y))*100
+    return {"result":str(result)+"%"}  
+
+@router.get("/sqrt/{x}/")
+def square_root(x):
+    try:
+      result=math.sqrt(float(x))
+      return {"result":str(result)} 
+    except:
+      return  {"result":'NaN',
+              "StatusCode":500} 
