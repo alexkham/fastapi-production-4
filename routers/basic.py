@@ -60,3 +60,10 @@ def square_root(x):
     except:
       return  {"result":'NaN',
               "StatusCode":500} 
+    
+@router.get("/modulo/{x}/{y}")
+def modulo(x,y):
+    x=float(x)
+    y=float(y)
+    result=math.fmod(x,y)
+    return {"result":str(result)}      
