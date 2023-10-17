@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from math import *
 
 router=APIRouter(
     prefix='/basic',
@@ -39,3 +40,8 @@ def power(x,y):
     result=float(x)**float(y)
     
     return {"result":str(result)}    
+
+@router.get("/abs/{x}/")
+def get_abs(x):
+    result=abs(float(x))
+    return {"result":str(result)}
