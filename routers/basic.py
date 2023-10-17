@@ -67,3 +67,10 @@ def modulo(x,y):
     y=float(y)
     result=math.fmod(x,y)
     return {"result":str(result)}      
+
+@router.get("/gcd/{x}/{y}")
+def greatest_common_divisor(x,y):
+    x=int(x)
+    y=int(y)
+    result=math.gcd(x,y)
+    return {"result":str(result)}  
