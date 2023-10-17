@@ -96,3 +96,23 @@ def get_root(x,y):
     number=float(y)
     result=number**(1/degree)
     return {"result":str(result)}  
+
+@router.get("/factorial/{x}")
+def get_factorial(x):
+    try:
+        x = float(x)  # Convert input to a floating-point number
+        if x.is_integer() and x >= 0:
+            result = math.factorial(int(x))
+            return {"result": str(result)}
+        else:
+            return {"result": 'NaN', "StatusCode": 500}
+    except ValueError:
+        return {"result": 'NaN', "StatusCode": 500}
+
+@router.get("/inverse/{x}/")
+def inverse(x):
+    x=float(x)
+    if x==0:
+        return {"result": 'NaN', "StatusCode": 500}
+    result=1/x
+    return {"result":str(result)}
