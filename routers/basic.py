@@ -116,3 +116,10 @@ def inverse(x):
         return {"result": 'NaN', "StatusCode": 500}
     result=1/x
     return {"result":str(result)}
+
+@router.get("/loganybase/{x}/{y}")
+def get_log_any_base(x,y):
+    base=float(x)
+    number=float(y)
+    result=math.log(number,base)
+    return {"result":str(result)}  
