@@ -92,7 +92,7 @@ def log2(x):
 
 @router.get("/root/{x}/{y}")
 def get_root(x,y):
-    degree=int(x)
-    number=int(y)
+    degree=float(x)
+    number=float(y)
     result=number**(1/degree)
     return {"result":str(result)}  
