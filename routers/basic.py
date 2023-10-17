@@ -84,3 +84,8 @@ def exponent(x):
 def log10(x):
     result=math.log10(float(x))
     return {"result":str(result)}
+
+@router.get("/log2/{x}/")
+def log2(x):
+    result=math.log2(float(x))
+    return {"result":str(result)}
