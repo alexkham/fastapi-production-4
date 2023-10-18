@@ -81,15 +81,7 @@ def exponent(x):
     result=math.exp(float(x))
     return {"result":str(result)}
 
-@router.get("/log10/{x}/")
-def log10(x):
-    result=math.log10(float(x))
-    return {"result":str(result)}
 
-@router.get("/log2/{x}/")
-def log2(x):
-    result=math.log2(float(x))
-    return {"result":str(result)}
 
 @router.get("/root/{x}/{y}")
 def get_root(x,y):
@@ -118,14 +110,15 @@ def inverse(x):
     result=1/x
     return {"result":str(result)}
 
-@router.get("/loganybase/{x}/{y}")
-def get_log_any_base(x,y):
-    base=float(x)
-    number=float(y)
-    result=math.log(number,base)
-    return {"result":str(result)}  
+
 
 @router.get("/frac/{x}/")
 def frac(x):
     result=fractions.Fraction(float(x))
+    return {"result":str(result)}
+
+
+@router.get("/trunc/{x}/")
+def get_trunc(x):
+    result=math.trunc(float(x))
     return {"result":str(result)}

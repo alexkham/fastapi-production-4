@@ -1,12 +1,14 @@
 from fastapi import FastAPI
 import routers
-from routers import basic
+from routers import basic,logarithms,trigonometry
 
 
 
 
 app = FastAPI()
 app.include_router(routers.basic.router)
+app.include_router(routers.logarithms.router)
+app.include_router(routers.trigonometry.router)
 
 
 @app.get("/")
