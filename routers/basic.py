@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 import math
+import fractions
 
 router=APIRouter(
     prefix='/basic',
@@ -123,3 +124,8 @@ def get_log_any_base(x,y):
     number=float(y)
     result=math.log(number,base)
     return {"result":str(result)}  
+
+@router.get("/frac/{x}/")
+def frac(x):
+    result=fractions.Fraction(float(x))
+    return {"result":str(result)}
