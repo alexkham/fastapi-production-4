@@ -34,4 +34,9 @@ def calculate_max(numbers_input: NumbersInput):
 @router.post("/mean")
 def calculate_mean(numbers_input: NumbersInput):
     result = sum(numbers_input.numbers)/len(numbers_input.numbers)
-    return {"result": result}    
+    return {"result": result}   
+
+@router.post("/median")
+def calculate_median(numbers_input: NumbersInput):
+    result =statistics.median(numbers_input.numbers)
+    return {"result": result}     
