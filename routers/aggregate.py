@@ -39,4 +39,9 @@ def calculate_mean(numbers_input: NumbersInput):
 @router.post("/median")
 def calculate_median(numbers_input: NumbersInput):
     result =statistics.median(numbers_input.numbers)
+    return {"result": result}  
+
+@router.post("/product")
+def calculate_product(numbers_input: NumbersInput):
+    result =math.prod(numbers_input.numbers)
     return {"result": result}     
