@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import routers
-from routers import basic,logarithms,trigonometry,aggregate,fractions
+from routers import basic,logarithms,trigonometry,aggregate,fractions,roots
 
 
 
@@ -11,6 +11,7 @@ app.include_router(routers.logarithms.router)
 app.include_router(routers.trigonometry.router)
 app.include_router(routers.aggregate.router)
 app.include_router(routers.fractions.router)
+app.include_router(routers.roots.router)
 
 
 @app.get("/")

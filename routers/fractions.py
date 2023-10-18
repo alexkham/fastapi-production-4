@@ -50,3 +50,11 @@ def simplify_mixed_fraction(whole_fraction: str):
 # Example usage:
 # Access the endpoint with a query parameter `whole_fraction`.
 # Example URL: /simplify_mixed_fraction?whole_fraction=3 1/4
+
+@router.get("/inverse/{x}/")
+def inverse(x):
+    x=float(x)
+    if x==0:
+        return {"result": 'NaN', "StatusCode": 500}
+    result=1/x
+    return {"result":str(result)}

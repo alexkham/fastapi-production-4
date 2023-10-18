@@ -53,14 +53,7 @@ def percentage(x,y):
     result=(float(x)/float(y))*100
     return {"result":str(result)+"%"}  
 
-@router.get("/sqrt/{x}/")
-def square_root(x):
-    try:
-      result=math.sqrt(float(x))
-      return {"result":str(result)} 
-    except:
-      return  {"result":'NaN',
-              "StatusCode":500} 
+
     
 @router.get("/modulo/{x}/{y}")
 def modulo(x,y):
@@ -82,14 +75,6 @@ def exponent(x):
     return {"result":str(result)}
 
 
-
-@router.get("/root/{x}/{y}")
-def get_root(x,y):
-    degree=float(x)
-    number=float(y)
-    result=number**(1/degree)
-    return {"result":str(result)}  
-
 @router.get("/factorial/{x}")
 def get_factorial(x):
     try:
@@ -101,17 +86,6 @@ def get_factorial(x):
             return {"result": 'NaN', "StatusCode": 500}
     except ValueError:
         return {"result": 'NaN', "StatusCode": 500}
-
-@router.get("/inverse/{x}/")
-def inverse(x):
-    x=float(x)
-    if x==0:
-        return {"result": 'NaN', "StatusCode": 500}
-    result=1/x
-    return {"result":str(result)}
-
-
-
 
 
 
