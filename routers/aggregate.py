@@ -33,5 +33,5 @@ def calculate_max(numbers_input: NumbersInput):
 
 @router.post("/mean")
 def calculate_mean(numbers_input: NumbersInput):
-    result = statistics.mean(numbers_input.numbers)
+    result = sum(numbers_input.numbers)/len(numbers_input.numbers)
     return {"result": result}    
