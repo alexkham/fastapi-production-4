@@ -112,10 +112,7 @@ def inverse(x):
 
 
 
-@router.get("/frac/{x}/")
-def frac(x):
-    result=fractions.Fraction(float(x))
-    return {"result":str(result)}
+
 
 
 @router.get("/trunc/{x}/")
