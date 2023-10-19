@@ -100,3 +100,9 @@ def get_random(x=0,y=100):
     result=random.randint(int(x),int(y))
     
     return {"result":str(result)}  
+
+@router.get("/random_float/")
+def get_random(x=0,y=100):
+    result=random.uniform(float(x),float(y))
+    
+    return {"result":str(result)}  

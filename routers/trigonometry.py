@@ -30,3 +30,9 @@ def get_tan(x):
     x=float(x)
     result=math.tan(math.radians(x))
     return {"result":str(result)}
+
+@router.get("/cot/{x}/")
+def get_cot(x):
+    x=float(x)
+    result=1/(math.tan(math.radians(x)))
+    return {"result":str(result)}
