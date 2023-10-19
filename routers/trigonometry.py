@@ -19,10 +19,23 @@ def get_sin(x):
     result=math.sin(math.radians(x))
     return {"result":str(result)}
 
+@router.get("/csc/{x}/")
+def get_csc(x):
+    x=float(x)
+    result=1/(math.sin(math.radians(x)))
+    return {"result":str(result)}
+
+
 @router.get("/cos/{x}/")
 def get_cos(x):
     x=float(x)
     result=math.cos(math.radians(x))
+    return {"result":str(result)}
+
+@router.get("/sec/{x}/")
+def get_sec(x):
+    x=float(x)
+    result=1/(math.cos(math.radians(x)))
     return {"result":str(result)}
 
 @router.get("/tan/{x}/")
