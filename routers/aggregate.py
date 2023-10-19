@@ -45,3 +45,9 @@ def calculate_median(numbers_input: NumbersInput):
 def calculate_product(numbers_input: NumbersInput):
     result =math.prod(numbers_input.numbers)
     return {"result": result}     
+
+
+@router.post("/variance")
+def calculate_variance(numbers_input: NumbersInput):
+    result =statistics.variance(numbers_input.numbers)
+    return {"result": result}  
