@@ -13,7 +13,7 @@ router=APIRouter(
 
 )
 
-@router.get("/frac/{x}/")
+@router.get("/to_frac/{x}/")
 def frac(x):
     result=fractions.Fraction(float(x))
     return {"result":str(result)}

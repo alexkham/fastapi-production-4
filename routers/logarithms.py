@@ -26,3 +26,8 @@ def get_log_any_base(x,y):
     number=float(y)
     result=math.log(number,base)
     return {"result":str(result)}  
+
+@router.get("/natural/{x}/")
+def log(x):
+    result=math.log(float(x))
+    return {"result":str(result)}
