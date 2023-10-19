@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 import math
 import fractions
+import random
 
 router=APIRouter(
     prefix='/basic',
@@ -93,3 +94,9 @@ def get_factorial(x):
 def get_trunc(x):
     result=math.trunc(float(x))
     return {"result":str(result)}
+
+@router.get("/random_int/")
+def get_random(x=0,y=100):
+    result=random.randint(int(x),int(y))
+    
+    return {"result":str(result)}  
