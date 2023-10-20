@@ -106,3 +106,13 @@ def is_integer(input_str):
     if re.match(r'^[-+]?[0-9]+$', input_str) or re.match(r'^[-+]?[0-9]+\.0+$', input_str):
         return True
     return False
+
+@router.get("/perfect_cube/{x}")
+def perfect_cube(x):
+    try:
+     number=float(x)
+     cube_root = round(number ** (1/3))
+     result=cube_root ** 3 == number
+     return {"result":result}
+    except:
+        return {"result":"Invalid input: Not Integer"}
