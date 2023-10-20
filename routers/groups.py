@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 import re
+import math
 
 
 router=APIRouter(
@@ -72,14 +73,23 @@ def is_even(number):
     
 @router.get("/perfect_square/{x}")
 def perfect_square(x):
-    if not  re.match(r'^[-+]?[0-9]+$', x) or is_float_number(x):
-        return {"result":"Invalid input: provide integer number"}
-    number=int(x)
-    if number < 0:
+    
+    # if x.isinstance('nan'):
+    #     return {"result":"Invalid input: NaN"}
+    # if not is_integer(x):
+    #     return {"result":"Invalid input: Not Integer"}
+    # if math.isnan(int(x)):
+    #    return {"result":"Invalid input: NaN"}
+    try:
+      number=int(x)
+      if number < 0:
         return { "result":False}  # Negative numbers are not perfect squares
-    sqrt = int(number ** 0.5)  # Calculate the integer square root
-    result=sqrt * sqrt == number# Check if the square of the square root equals the number
-    return   {"result" :result}
+      
+      sqrt = int(number ** 0.5)  # Calculate the integer square root
+      result=sqrt * sqrt == number# Check if the square of the square root equals the number
+      return   {"result" :result}
+    except:
+        return {"result":"Invalid input: Not Integer"}
 
 
 def is_nan(input_str):
@@ -88,6 +98,11 @@ def is_nan(input_str):
 def is_float_number(input_str):
     try:
         float_value = float(input_str)
-        return "." in input_str and float_value != int(float_value)
+        return (float_value != int(float_value)) and ("." in input_str) 
     except ValueError:
         return False  # Not a floating-point numberq
+    
+def is_integer(input_str):
+    if re.match(r'^[-+]?[0-9]+$', input_str) or re.match(r'^[-+]?[0-9]+\.0+$', input_str):
+        return True
+    return False

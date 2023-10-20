@@ -19,6 +19,9 @@ def get_sin(x):
     result=math.sin(math.radians(x))
     return {"result":str(result)}
 
+def round_to_multiple(number, multiple):
+    return multiple * round(number / multiple)
+
 @router.get("/csc/{x}/")
 def get_csc(x):
     x=float(x)
