@@ -72,11 +72,14 @@ def is_even(number):
     
 @router.get("/perfect_square/{x}")
 def perfect_square(x):
+    if not  re.match(r'^[-+]?[0-9]+$', x) or is_float_number(x):
+        return {"result":"Invalid input: provide integer number"}
     number=int(x)
     if number < 0:
-        return False  # Negative numbers are not perfect squares
+        return { "result":False}  # Negative numbers are not perfect squares
     sqrt = int(number ** 0.5)  # Calculate the integer square root
-    return sqrt * sqrt == number  # Check if the square of the square root equals the number
+    result=sqrt * sqrt == number# Check if the square of the square root equals the number
+    return   {"result" :result}
 
 
 def is_nan(input_str):
