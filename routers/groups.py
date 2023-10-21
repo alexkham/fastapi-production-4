@@ -246,8 +246,8 @@ def is_triangular(x):
         return {"result":"Invalid input"}
 
 # Example usage:
-number = 21  # 21 is a triangular number (1 + 2 + 3 + 4 + 5 + 6 = 21)
-if is_triangular(number):
-    print(f"{number} is a triangular number.")
-else:
-    print(f"{number} is not a triangular number.")
+# number = 21  # 21 is a triangular number (1 + 2 + 3 + 4 + 5 + 6 = 21)
+# if is_triangular(number):
+#     print(f"{number} is a triangular number.")
+# else:
+#     print(f"{number} is not a triangular number.")
