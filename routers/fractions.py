@@ -39,6 +39,8 @@ def simplify_mixed_fraction(whole_fraction: str):
 
         if remainder == 0:
             return {"result": f"{sign}{integer_part}"}
+        elif integer_part==0:
+            return {"result": f"{sign}{remainder}/{denominator}"}
         else:
             return {"result": f"{sign}{integer_part} {remainder}/{denominator}"}
     except ValueError:
@@ -90,15 +92,15 @@ def convert_and_calculate_fraction(num1:str, den1:str, operation:str, num2:str, 
         den=result.denominator
         integer_part=num/den
         fraction_part=Fraction(float(result-integer_part))
-        simpl=f"{integer_part}{fraction_part}"
-        simplified=simplify_mixed_fraction(result)["result"]
+        decimal=f"{integer_part}{fraction_part}"
+        mixed=simplify_mixed_fraction(result)["result"]
            
         #    # explanation.append(f"Adding {fraction1} and {fraction2}: {result}")
         return { "result": f"{result}",
                 "numerator":f"{num}",
                 "denominator":f"{den}",
-                "simplified":f"{simpl}",
-                "simplified2":f"{simplified}"}   
+                "decimal":f"{decimal}",
+                "mixed":f"{mixed}"}   
         # elif operation == "subtract":
         #     result = fraction1 - fraction2
         #     explanation.append(f"Subtracting {fraction2} from {fraction1}: {result}")
