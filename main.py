@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import routers
 from routers import basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions
 
@@ -16,6 +17,19 @@ app.include_router(routers.constants.router)
 app.include_router(routers.groups.router)
 app.include_router(routers.conversions.router)
 
+
+
+
+origins = ["http://localhost:3000"]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
