@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 import math
+from scipy import constants
 
 
 router=APIRouter(
