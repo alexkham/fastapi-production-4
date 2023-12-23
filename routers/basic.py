@@ -58,10 +58,21 @@ def percentage(x,y):
     
 @router.get("/modulo/{x}/{y}")
 def modulo(x,y):
-    x=float(x)
-    y=float(y)
+    x=int(x)
+    y=int(y)
     result=math.fmod(x,y)
-    return {"result":str(result)}      
+    return {"result":str(result)} 
+
+@router.get("/lcm/{a}/{b}")
+def get_lcm(a: int, b: int):
+    result=abs(a*b) // math.gcd(a, b)
+    return {"result":result }
+
+@router.get("/quotient/{a}/{b}")
+def get_quotient(a: int, b: int):
+    result=int(a//b)
+    return {"result":result }
+
 
 @router.get("/gcd/{x}/{y}")
 def greatest_common_divisor(x,y):

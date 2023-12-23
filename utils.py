@@ -19,17 +19,19 @@ for angle in range(361):
     if response.status_code == 200:
         data = response.json()
         # Add radians value and angle to the response data
+        
         data["angle_degrees"] = angle
         data["angle_radians"] = degrees_to_radians(angle)
         trigonometric_table.append(data)
+        
     else:
         print(f"Failed to get data for angle: {angle} degrees")
 
 # Convert the list to a JSON string
-json_data = json.dumps(trigonometric_table, indent=4)
+#json_data = json.dumps(trigonometric_table, indent=4)
 
 # Optionally, save the JSON data to a file
-with open('trigonometric_table.json', 'w') as file:
-    file.write(json_data)
+with open('trigonometric_table2.json', 'w') as file:
+    json.dump(trigonometric_table,file,indent=4)
 
 print("Trigonometric table generated successfully.")
