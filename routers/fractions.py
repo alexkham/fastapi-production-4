@@ -1,7 +1,10 @@
-from fastapi import APIRouter
+from fastapi import APIRouter , Query
 import fractions
 from fractions import Fraction
 from decimal import Decimal
+import re
+
+
 
 
 router=APIRouter(
@@ -10,14 +13,14 @@ router=APIRouter(
 
 )
 
-@router.get("/to_frac/{x}/")
+@router.get("/float_to_frac/{x}/")
 def frac(x):
     result=fractions.Fraction(str(x))
     return {"result":str(result)}
 
 
 
-@router.get("/mixed/{whole_fraction}")
+@router.get("/float_to_mixed/{whole_fraction}")
 def simplify_mixed_fraction(whole_fraction: str):
     try:
         fraction = Fraction(whole_fraction)
@@ -115,4 +118,70 @@ def convert_and_calculate_fraction(num1:str, den1:str, operation:str, num2:str, 
 
         # return {"explanation": explanation, "result": result}
    
+# @router.get("/mixed_to_float")
+# def to_float(x):
+#      x=str(x)
+#      x=x.strip()
+#      spl=re.split('\s+', x)
+#      if len(spl)>1: 
+#         [whole,frac]=spl
+#         num = float(whole.strip()) + float(Fraction(frac.strip()))
+#         return {"result":str(num)}
+#      else:
+#         num=float(Fraction(x.strip())) 
+#         return {"result":str(num)}
 
+@router.get("/mixed_to_float")
+def mixed_to_float(x: str = Query(...)):  # 'x' is now a required query parameter
+    x = x.strip()
+    spl = re.split(r'\s+', x)
+    if len(spl) > 1:
+        whole, frac = spl
+        num = float(whole) + float(Fraction(frac))
+    else:
+        num = float(Fraction(x))
+    return {"result": str(num)}
+
+
+@router.get("/add_mixed")
+def add_mixed(x: str = Query(...), y: str = Query(...)):
+    res1=mixed_to_float(x)
+    num1=res1["result"]
+    res2=mixed_to_float(y)
+    num2=res2["result"]
+    result=Fraction(Decimal(num1))+Fraction(Decimal(num2))
+    result=simplify_mixed_fraction(result)
+    return result
+    # return {"result": result}
+
+
+@router.get("/subtract_mixed")
+def subtract_mixed(x: str = Query(...), y: str = Query(...)):
+    res1=mixed_to_float(x)
+    num1=res1["result"]
+    res2=mixed_to_float(y)
+    num2=res2["result"]
+    result=Fraction(str(num1))-Fraction(str(num2))
+    result=simplify_mixed_fraction(result)
+    return result
+
+
+@router.get("/multiply_mixed")
+def multiply_mixed(x: str = Query(...), y: str = Query(...)):
+    res1=mixed_to_float(x)
+    num1=res1["result"]
+    res2=mixed_to_float(y)
+    num2=res2["result"]
+    result=Fraction(str(num1))*Fraction(str(num2))
+    result=simplify_mixed_fraction(result)
+    return result
+
+@router.get("/divide_mixed")
+def divide_mixed(x: str = Query(...), y: str = Query(...)):
+    res1=mixed_to_float(x)
+    num1=res1["result"]
+    res2=mixed_to_float(y)
+    num2=res2["result"]
+    result=Fraction(str(num1))/Fraction(str(num2))
+    result=simplify_mixed_fraction(result)
+    return result

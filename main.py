@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import routers
-from routers import basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions
+from routers import octal,hexadecimal,binary,basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions
 
 
 
@@ -16,6 +16,9 @@ app.include_router(routers.roots.router)
 app.include_router(routers.constants.router)
 app.include_router(routers.groups.router)
 app.include_router(routers.conversions.router)
+app.include_router(routers.binary.router)
+app.include_router(routers.hexadecimal.router)
+app.include_router(routers.octal.router)
 
 
 
@@ -38,4 +41,11 @@ async def root():
 @app.get("/ask")
 async def ask():
     return {"message": "How are  you today Ah You??"}
+
+
+@app.get("/api/your-content")
+async def get_content():
+    # Handle data generation and return in desired format (JSON, HTML, etc.)
+    return {"message": "Hello from FastAPI! /n x+y=z"}
+
 

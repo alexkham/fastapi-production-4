@@ -80,3 +80,8 @@ def convert_units(quantity: float, from_unit: str, to_unit: str):
         raise HTTPException(status_code=400, detail=str(e))
 
 
+@router.get("/int_to_bin/{x}")
+def int_to_binary(x:str):
+    intNum=int(x)
+    result=bin(intNum)
+    return {"result":str(result)[2:]}
