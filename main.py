@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import routers
-from routers import octal,hexadecimal,binary,basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions
+from routers import octal,hexadecimal,binary,basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions,temperature
 
 
 
@@ -19,11 +19,12 @@ app.include_router(routers.conversions.router)
 app.include_router(routers.binary.router)
 app.include_router(routers.hexadecimal.router)
 app.include_router(routers.octal.router)
+app.include_router(routers.temperature.router)
 
 
 
 
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:3000","167.248.133.188"]
 
 
 app.add_middleware(

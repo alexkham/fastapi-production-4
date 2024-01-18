@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException
 import pint
 from pint import UnitRegistry
+import numpy as np
+
 
 
 
@@ -85,3 +87,15 @@ def int_to_binary(x:str):
     intNum=int(x)
     result=bin(intNum)
     return {"result":str(result)[2:]}
+
+
+
+
+def decimal_to_binary_twos_complement_np(n):
+    if n == 0:
+        return '0'
+    elif n > 0:
+        return np.binary_repr(n)
+    else:
+        # For negative numbers, use NumPy's binary representation with width
+        return np.binary_repr(n, width=32)  # Assuming 32-bit integers
