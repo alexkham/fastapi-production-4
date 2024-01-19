@@ -29,7 +29,7 @@ origins = ["http://localhost:3001","167.248.133.188","https://calculateonline.ne
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
