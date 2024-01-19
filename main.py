@@ -24,7 +24,7 @@ app.include_router(routers.temperature.router)
 
 
 
-origins = ["http://localhost:3001","167.248.133.188","https://calculateonline.net"]
+origins = ["http://localhost:3001","167.248.133.188","https://www.calculateonline.net"]
 
 
 app.add_middleware(
