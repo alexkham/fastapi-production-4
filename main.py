@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 import routers
 from routers import octal,hexadecimal,binary,basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions,temperature
 
@@ -51,4 +52,5 @@ async def get_content():
     # Handle data generation and return in desired format (JSON, HTML, etc.)
     return {"message": "Hello from FastAPI! /n x+y=z"}
 
-
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8001, log_level="info")
