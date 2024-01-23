@@ -53,4 +53,5 @@ async def get_content():
     return {"message": "Hello from FastAPI! /n x+y=z"}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8001, log_level="info")
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8001)
