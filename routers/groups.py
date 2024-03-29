@@ -40,15 +40,7 @@ def is_prime_str(input_str):
     except ValueError:
         return False  # Not a number
 
-# Example usage:
-# input_str = "17"  # You can pass any string as input
-# result = is_prime_str(input_str)
-# if result is True:
-#     print(f"{input_str} is a prime number.")
-# elif result is False:
-#     print(f"{input_str} is not a prime number or not an integer.")
-# else:
-#     print(f"{input_str} is a float, not an integer.")
+
 
 @router.get("/odd_or_even/{x}")
 def odd_or_even(x):

@@ -26,6 +26,7 @@ app.include_router(routers.temperature.router)
 
 
 origins = ["http://localhost:3001","167.248.133.188","https://www.calculateonline.net",
+           "https://learnmathclass.com",
            "http://localhost:3000",  
     "http://127.0.0.1:3000"]
 

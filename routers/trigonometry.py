@@ -120,6 +120,7 @@ def normalize_angle(x: float, unit: Unit):
     else:  # Radians
         x = x % (2 * np.pi)
     return x
+
 @router.get("/all_trigo/{x}/")
 def get_all_trigo_values(x: float, unit: Unit = Query(default=Unit.degrees)):
     x = normalize_angle(x, unit)
