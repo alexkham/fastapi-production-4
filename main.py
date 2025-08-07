@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import routers
-from routers import octal,hexadecimal,binary,basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions,temperature
+from routers import octal,hexadecimal,binary,basic,logarithms,trigonometry,aggregate,fractions,roots,constants,groups,conversions,temperature,combinatorics
 
 
 
@@ -21,6 +21,7 @@ app.include_router(routers.binary.router)
 app.include_router(routers.hexadecimal.router)
 app.include_router(routers.octal.router)
 app.include_router(routers.temperature.router)
+app.include_router(routers.combinatorics.router)
 
 
 
